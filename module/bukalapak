@@ -1,0 +1,88 @@
+const baseurl = 'https://www.bukalapak.com/products';
+
+const utils = require('./utils');
+
+
+exports.getURL = function () {
+  return baseurl;
+};
+
+function searchURL(keyword, startprice, endprice, condition){
+  var url = baseurl + '?search[keywords]=?' + keyword;
+  url = url + '&search[price_max]=' + endprice + '&search[price_min]=' + startprice;
+  url = url + '&search[sort_by]=last_relist_at%3Adesc';
+
+  if (condition == 1){
+    url = url + '&search[new]=1';
+  }else if (condition == 2){
+    url = url + '&search[used]=1';
+  }
+
+  return url;
+}
+
+
+async function doSearch(page, product){
+
+
+  var url = searchURL(product.keyword, product.startprice, product.endprice, product.condition);
+  await page.goto( url, { waitUntil: 'networkidle2' });
+
+  try{
+    const [notfound] = await page.$x("//p[contains(., 'Barang tidak ditemukan')]");
+    if (notfound) {
+        utils.showNotFound('Bukalapak', product.keyword, product.startprice, product.endprice);
+        return;
+    }
+  } catch (error) {
+    utils.error(error.message);
+  }
+
+  await utils.autoScroll(page);  //no autoscroll for FB
+  utils.infoheader(url);
+
+  try {
+    // await page.waitForSelector(selector, { timeout: 3000 })
+    // let content = await page.evaluate(({selector}) => document.querySelector(selector), {selector} );
+    let data = await page.evaluate(() => {
+        var result = []
+        // let doc = document.querySelector('[data-testid="divSRPContentProducts"]');
+
+        let details = document.querySelectorAll('.bl-product-card__description');
+        for (var detail of details){
+            // var _isnew = detail.textContent.includes('Produk Terbaru');
+            var item = {
+              name : detail.querySelector('a').innerText ,
+              price : detail.querySelector('.bl-product-card__description-price').querySelector('p').innerText ,
+              link : detail.querySelector('a').href ,
+              isnew : false
+            };
+
+            // if (item.link.includes('tokopedia.com/promo/v1/clicks'))  item.link = '** promo/topads **'
+            result.push(item);
+        }
+
+        return result
+      }
+    );
+
+    for (var d of data){
+        var tag = '';
+        if (d.isnew) tag = 'New';
+        utils.showPrice2('Bukalapak', tag, d.name, d.price, d.link);
+        // await new Promise(r => setTimeout(r, 10000));
+        // await sleep(500);
+
+        await page.waitForTimeout(2000);
+    }
+
+
+    // ...
+  } catch (error) {
+    utils.showNotFound('Bukalapak', product.keyword, product.startprice, product.endprice);
+  }
+
+}
+
+
+module.exports.doSearch = doSearch;
