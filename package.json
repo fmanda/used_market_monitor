@@ -1,0 +1,14 @@
+{
+  "name": "used_market_monitor",
+  "version": "1.0.0",
+  "description": "Marketplace Used Item's monitoring",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fmanda",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^5.5.0"
+  }
+}
