@@ -3,26 +3,32 @@
   "tokopedia" : true,
   "bukalapak" : true,
   "products" : [
-	  {
-      "keyword": "Vortex VX7",
+    {
+      "keyword": "Poco M3 6/128",
+      "startprice": 2000000,
+      "endprice": 3000000,
+      "condition" : 1
+    },       
+    {
+      "keyword": "NVME 256",
       "startprice": 200000,
-      "endprice": 450000,
-      "condition" : 2
+      "endprice": 400000,
+      "condition": 2
     },
     {
-      "keyword": "Daxa M71",
+      "keyword": "SSD 512",
       "startprice": 300000,
-      "endprice": 400000,
-      "condition": 2
-    },    
-    {
-      "keyword": "M2 256",
-      "startprice": 200000,
-      "endprice": 400000,
+      "endprice": 600000,
       "condition": 2
     },
     {
-      "keyword": "NVME 512",
+      "keyword": "SSD 480",
+      "startprice": 300000,
+      "endprice": 500000,
+      "condition": 2
+    },
+    {
+      "keyword": "SSD 500",
       "startprice": 300000,
       "endprice": 600000,
       "condition": 2
