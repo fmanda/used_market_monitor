@@ -1,61 +1,15 @@
 {
   "sort_by" : "newest",
   "tokopedia" : true,
-  "bukalapak" : true,
+  "bukalapak" : false,
+  "argproxy" : "http://220.150.76.212:6000",
   "products" : [
     {
-      "keyword": "Poco M3 6/128",
-      "startprice": 2000000,
-      "endprice": 3000000,
-      "condition" : 1
-    },       
-    {
-      "keyword": "NVME 256",
-      "startprice": 200000,
-      "endprice": 400000,
-      "condition": 2
-    },
-    {
-      "keyword": "SSD 512",
+      "keyword": "Redmi 9T",
       "startprice": 300000,
-      "endprice": 600000,
-      "condition": 2
-    },
-    {
-      "keyword": "SSD 480",
-      "startprice": 300000,
-      "endprice": 500000,
-      "condition": 2
-    },
-    {
-      "keyword": "SSD 500",
-      "startprice": 300000,
-      "endprice": 600000,
-      "condition": 2
-    },
-    {
-      "keyword": "Corsair K65",
-      "startprice": 300000,
-      "endprice": 400000,
-      "condition": 2
-    },
-    {
-      "keyword": "Corsair K63",
-      "startprice": 300000,
-      "endprice": 400000,
-      "condition": 2
-    },
-    {
-      "keyword": "Noctua industrial",
-      "startprice": 100000,
-      "endprice": 300000,
-      "condition": 2
-    },
-    {
-      "keyword": "Noctua IPPC",
-      "startprice": 100000,
-      "endprice": 300000,
-      "condition": 2
+      "endprice": 380000,
+      "condition" : 1,
+      "powermerchant" : true
     }
   ]
 }

@@ -9,11 +9,15 @@ exports.getURL = function () {
   return baseurl;
 };
 
-function searchURL(keyword, startprice, endprice, condition){
+function searchURL(keyword, startprice, endprice, condition, powermerchant){
   var url = baseurl + 'search?';
   if (condition > 0){
     url = url + 'condition=' + condition + '&';
   }
+  if (powermerchant == true){
+    url = url + 'goldmerchant=true&';
+  }
+  url = url + 'navsource=home&';
   url = url + 'ob=9&';
   url = url + 'pmax='+endprice+'&pmin='+startprice+'&';  //keyword
   return url + 'st=product&q=' + keyword;

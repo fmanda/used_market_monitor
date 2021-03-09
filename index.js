@@ -6,7 +6,11 @@ if (process.argv[2]) {
 }
 var cfg = require('./' + config_file_name);
 
-const puppeteer = require('puppeteer')
+// const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer-extra')
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+puppeteer.use(StealthPlugin())
+
 const toped = require('./module/toped')
 const bukalapak = require('./module/bukalapak')
 const utils = require('./module/utils')
@@ -30,9 +34,18 @@ try {
 
 		const browser = await puppeteer.launch({
 			headless: false,  /*userDataDir: newchromeprofile,executablePath: chromepath*/
+      args:['--proxy-server=' + cfg.argproxy]
 		})
 		const page = await browser.newPage()
-		await page.setViewport({ width: 0, height: 0 })
+		await page.setViewport({ width: 0, height: 0 });
+
+    utils.log('Get your proxy here : https://free-proxy-list.net/')
+    utils.log('Checking your Public IP Address');
+    await page.goto( 'http://whatismyipaddress.com/', { waitUntil: 'networkidle2' });
+    await page.waitForTimeout(3000);
+
+    //return;
+
     var i = 1;
     while (true){
       utils.log('Looping : ' + i.toString());
@@ -47,7 +60,7 @@ try {
           await bukalapak.doSearch(page, product);
         }
 
-        // await page.waitForTimeout(3000);
+        await page.waitForTimeout(10000);
   		}
     }
 	})()
