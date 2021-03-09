@@ -41,8 +41,12 @@ try {
 
     utils.log('Get your proxy here : https://free-proxy-list.net/')
     utils.log('Checking your Public IP Address');
-    await page.goto( 'http://whatismyipaddress.com/', { waitUntil: 'networkidle2' });
-    await page.waitForTimeout(3000);
+    try{
+      await page.goto( 'http://whatismyipaddress.com/', { waitUntil: 'networkidle2' });
+      await page.waitForTimeout(3000);
+    } catch (err) {
+    	console.error(err)
+    }
 
     //return;
 
