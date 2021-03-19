@@ -39,7 +39,7 @@ try {
 		const page = await browser.newPage()
 		await page.setViewport({ width: 0, height: 0 });
 
-    utils.log('Get your proxy here : https://free-proxy-list.net/')
+    utils.log('Get your proxy here : http://www.freeproxylists.net/?c=&pt=&pr=&a%5B%5D=0&a%5B%5D=2&u=90/')
     utils.log('Checking your Public IP Address');
     try{
       await page.goto( 'http://whatismyipaddress.com/', { waitUntil: 'networkidle2' });

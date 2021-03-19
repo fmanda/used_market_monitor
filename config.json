@@ -2,12 +2,12 @@
   "sort_by" : "newest",
   "tokopedia" : true,
   "bukalapak" : false,
-  "argproxy" : "http://220.150.76.212:6000",
+  "argproxy" : "http://34.92.50.186:3128",
   "products" : [
     {
       "keyword": "Redmi 9T",
-      "startprice": 300000,
-      "endprice": 380000,
+      "startprice": 2150000,
+      "endprice": 2200000,
       "condition" : 1,
       "powermerchant" : true
     }
